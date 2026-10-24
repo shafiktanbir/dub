@@ -34,8 +34,8 @@ export default function MessagesLayout({ children }: { children: ReactNode }) {
   }, [searchParams.get("new")]);
 
   useEffect(() => {
+    setOpeningThreadId(programSlug ?? null);
     if (!programSlug) {
-      setOpeningThreadId(null);
       setLoadedThreadId(null);
     }
   }, [programSlug]);
@@ -79,10 +79,8 @@ export default function MessagesLayout({ children }: { children: ReactNode }) {
               <ProgramSelector
                 selectedProgramSlug={programSlug ?? null}
                 setSelectedProgramSlug={(slug) => {
-                  if (slug !== programSlug) {
-                    setCurrentPanel("main");
-                    setOpeningThreadId(slug);
-                  }
+                  setCurrentPanel("main");
+                  setOpeningThreadId(slug);
                   router.push(`/messages/${slug}`);
                 }}
                 trigger={

@@ -55,8 +55,8 @@ function CapableLayout({ children }: { children: ReactNode }) {
   );
 
   useEffect(() => {
+    setOpeningThreadId(partnerId ?? null);
     if (!partnerId) {
-      setOpeningThreadId(null);
       setLoadedThreadId(null);
     }
   }, [partnerId]);
@@ -109,10 +109,8 @@ function CapableLayout({ children }: { children: ReactNode }) {
                 <PartnerSelector
                   selectedPartnerId={partnerId ?? null}
                   setSelectedPartnerId={(id) => {
-                    if (id !== partnerId) {
-                      setCurrentPanel("main");
-                      setOpeningThreadId(id);
-                    }
+                    setCurrentPanel("main");
+                    setOpeningThreadId(id);
                     router.push(`/${workspaceSlug}/program/messages/${id}`);
                   }}
                   trigger={

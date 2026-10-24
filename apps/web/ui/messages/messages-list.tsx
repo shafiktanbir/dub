@@ -45,7 +45,7 @@ export function MessagesList({
                 href={group.href}
                 onClick={() => {
                   setCurrentPanel("main");
-                  if (group.id !== activeId) setOpeningThreadId(group.id);
+                  setOpeningThreadId(group.id);
                 }}
                 className={cn(
                   "border-border-subtle flex w-full items-center gap-2.5 border-b bg-white px-6 py-4",
